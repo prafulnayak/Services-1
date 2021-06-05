@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startService(){
+        ExampleService.shouldIStop = false;
         Intent serviceIntent = new Intent(this, ExampleService.class);
         serviceIntent.putExtra("inputExtra",binding.editText.getText().toString().trim());
         this.startService(serviceIntent);
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void stopService(){
         Intent serviceIntent = new Intent(this, ExampleService.class);
+        ExampleService.shouldIStop = true;
         this.stopService(serviceIntent);
     }
 }
